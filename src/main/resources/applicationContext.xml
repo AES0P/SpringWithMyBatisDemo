@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <context:component-scan base-package="com.hzero.demo.mybatis.*"/>
+
+    <!-- ...引入jdbc数据源 -->
+    <import resource="Spring-Datasource.xml"/>
+
+    <!-- ...引入MyBatis-Config数据源 -->
+    <import resource="MyBatis-Config.xml"/>
+
+    <!-- ...事务管理 -->
+
+    <!--    使用 MyBatis-Spring 的其中一个主要原因是它允许 MyBatis 参与到 Spring 的事务管理中，而不是给 MyBatis 创建一个新的专用事务管理器。-->
+    <!--    MyBatis-Spring 借助了 Spring 中的 DataSourceTransactionManager 来实现事务管理-->
+    <!--    为事务管理器指定的 DataSource 必须和用来创建 SqlSessionFactoryBean 的是同一个数据源，否则事务管理器就无法工作了。-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--传入的 DataSource 可以是任何能够与 Spring 兼容的 JDBC DataSource。包括连接池和通过 JNDI 查找获得的 DataSource。-->
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+</beans>
