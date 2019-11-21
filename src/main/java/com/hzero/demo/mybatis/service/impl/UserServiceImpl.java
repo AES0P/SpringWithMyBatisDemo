@@ -1,7 +1,6 @@
 package com.hzero.demo.mybatis.service.impl;
 
 import com.hzero.demo.mybatis.dao.impl.UserDaoImpl;
-import com.hzero.demo.mybatis.mapper.UserMapper;
 import com.hzero.demo.mybatis.pojo.User;
 import com.hzero.demo.mybatis.service.UserService;
 import org.springframework.stereotype.Service;
@@ -17,9 +16,30 @@ public class UserServiceImpl implements UserService {
     private UserDaoImpl userDao;
 
     @Override
+    public int insertUser(User user) {
+        return userDao.insertUser(user);
+    }
+
+    @Override
+    public int deleteUserById(int id) {
+        return userDao.deleteUserById(id);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    @Override
     public User findUserById(int id) {
         return userDao.findUserById(id);
     }
+
+    @Override
+    public List<User> findAllUser() {
+        return userDao.findAllUser();
+    }
+
 
     @Override
     public User findUserByIdBySqlSession(int userId) {
@@ -30,9 +50,6 @@ public class UserServiceImpl implements UserService {
     public void insertUsersBySqlSession(List<User> users) {
         userDao.insertUsersBySqlSession(users);
     }
-
-
-    private  UserMapper userMapper;
 
 
 }

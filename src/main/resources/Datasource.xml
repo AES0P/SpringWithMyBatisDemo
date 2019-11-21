@@ -14,10 +14,10 @@
         <property name="maxWait" value="120000"/>
     </bean>
 
-    <!-- 配置Jdbc template ，注入datasource-->
-    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
-        <!--        <property name="dataSource" ref="dataSource"/>-->
-        <property name="dataSource" value="#{dataSource}"/><!--和上面语句等价的EL表达式-->
-    </bean>
+    <!-- 配置Jdbc template ，注入datasource，当然，在这个demo里它不会被使用到-->
+<!--    <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">-->
+<!--        &lt;!&ndash;        <property name="dataSource" ref="dataSource"/>&ndash;&gt;-->
+<!--        <property name="dataSource" value="#{dataSource}"/>&lt;!&ndash;和上面语句等价的EL表达式&ndash;&gt;-->
+<!--    </bean>-->
 
 </beans>

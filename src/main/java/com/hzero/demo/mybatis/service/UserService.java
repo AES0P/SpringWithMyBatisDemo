@@ -6,7 +6,15 @@ import java.util.List;
 
 public interface UserService {
 
+    int insertUser(User user);
+
+    int deleteUserById(int id);
+
+    int updateUser(User user);
+
     User findUserById(int id);
+
+    List<User> findAllUser();
 
     User findUserByIdBySqlSession(int userId);
 
